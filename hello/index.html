@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <meta charset="utf-8"/ >
+        <title>LINE Liff</title>
+        <style>
+            body {
+                font-size: 2rem;
+            }
+
+            .description {
+                margin: 20px;
+                padding: 20px;
+                font-style: oblique;
+            }
+
+            div.row {
+                min-height: 50px;
+                background-color: #DDDDFF;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .info {
+                background-color: #EEEEEE;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .time {
+                margin: 10px;
+                padding: 3px 7px;
+                color: #fff;
+                background-color: #777;
+                border-radius: 6px;
+                font-size: 0.7rem;
+            }
+
+            li {
+                margin-top: 20px;
+            }
+        </style>
+        <script src="https://line-objects-internal.com/assets/liff/edge/2.0/liff.js"></script>
+        <script src="./hello.js"></script>
+    </head>
+    <body>
+        <h1>LINE LIFF</h1>
+        <p class="description">
+            I am learning LIFF
+        </p>
+        <div class="row">
+            <ul>
+                <li><a href="line://liff?url=https://www.google.com">line://liff?url=https://www.google.com</a></li>
+                <li><a href="https://liff.dryrun.dev/">https://liff.dryrun.dev/</a></li>
+                <li><a href="https://liffserver.dryrun.dev/hello/">https://liffserver.dryrun.dev/hello</a></li>
+                <li><a href="https://liffserver.dryrun.dev/1564460433-w30g6zmn">https://liffserver.dryrun.dev/1564460433-w30g6zmn</a></li>
+                <li><a href="lineb://app/1564460433-w30g6zmn">for LINE Beta app: lineb://app/1564460433-w30g6zmn</a></li>
+                <li><a href="https://liff.line-beta.me/1564460433-w30g6zmn">for LINE Beta app: https://liff.line-beta.me/1564460433-w30g6zmn</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div>Open this page AGAIN!</div>
+            <a id="here" href=""></a>
+            <script>
+                window.onLoadFuncs.push(function() {
+                    var a = document.getElementById('here');
+                    var url = "line://liff?url=" + location.origin + location.pathname;
+                    here.href = url;
+                    here.innerText = url;
+                });
+            </script>
+        </div>
+
+        <h2>Info</h2>
+        <table border="1" style="font-size: 2rem;">
+            <tr>
+                <th>language</th>
+                <td id="languagefield"></td>
+            </tr>
+            <tr>
+                <th>context.viewType</th>
+                <td id="viewtypefield"></td>
+            </tr>
+            <tr>
+                <th>context.userId</th>
+                <td id="useridfield"></td>
+            </tr>
+            <tr>
+                <th>context.utouId</th>
+                <td id="utouidfield"></td>
+            </tr>
+            <tr>
+                <th>context.roomId</th>
+                <td id="roomidfield"></td>
+            </tr>
+            <tr>
+                <th>context.groupId</th>
+                <td id="groupidfield"></td>
+            </tr>
+        </table>
+
+        <h2>Debug Logs</h2>
+        <ul id="logs">
+            <li class="info"></li>
+            <li class="info"></li>
+            <li class="info"></li>
+            <li class="info"></li>
+            <li class="info"></li>
+            <li class="info"></li>
+            <li class="info"></li>
+        </ul>
+    <script>
+    </script>
+</html>
