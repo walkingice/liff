@@ -54,5 +54,16 @@ window.onload = function() {
             appendLog(e.toString());
         });
     }
+
+    document.getElementById('shortcut').onclick = function () {
+        liff.addToHomeScreen({
+            name: "Test",
+            iconUrl: "https://fakeimg.pl/100x100/880055/",
+            state: "search?q=foo"
+        }).then(function(result) {
+            alert("Result:" + result.status)
+            console.log(result.status)
+        }.bind(this))
+    }
 };
 
