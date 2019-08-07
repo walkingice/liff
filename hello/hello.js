@@ -50,15 +50,7 @@ window.onload = function() {
     if (liff === undefined || !liff) {
         alert('No LIFF SDK ?!');
     } else {
-        appendLog("init LIFF....");
-        liff.init({"liffId": "1564460433-w30g6zmn"})
-        .then(function(msg) {
-            appendLog("LIFF initialized", msg);
-            initializeApp(liff.getLanguage(), liff.getContext());
-        })
-        .catch(function(e) {
-            appendLog(e.toString());
-        });
+        appendLog("init simple LIFF bridge....");
     }
 };
 
