@@ -46,5 +46,22 @@ window.onload = function() {
     } else {
         appendLog("init simple LIFF bridge....");
     }
+
+    document.getElementById('actionBtn').onclick = function () {
+        liff.postMessage(
+            'shareMessage',
+            'dummy_feature_token',
+            {
+                "messages": "share this message",
+                "referrer": {
+                    "liffId": "foobar_id",
+                    "url": "https://foo.bar.com"
+                }
+            },
+            function(result) {
+                console.log(result);
+            }
+        );
+    }
 };
 
