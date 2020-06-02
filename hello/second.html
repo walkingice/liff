@@ -1,21 +1,11 @@
 <html>
     <head>
         <meta charset="utf-8"/ >
-        <title>LINE Liff</title>
+        <title>Second page</title>
         <style>
             body {
                 font-size: 2rem;
-            }
-
-            input {
-                font-size: 3rem;
-                width:90%;
-                margin: auto;
-                background-color: #FFC;
-            }
-
-            .highlight {
-                background-color: #FFC;
+                background-color: #EEEEEE;
             }
 
             .description {
@@ -50,47 +40,32 @@
                 margin-top: 20px;
             }
         </style>
+        <link rel="stylesheet" href="./styles.css">
         <script src="bridge.js"></script>
         <script src="./hello.js"></script>
+        <script>
+            window.liff = {
+                id: 'world'
+            }
+        </script>
     </head>
     <body>
-        <h1>LINE LIFF</h1>
+        <h1>Second </h1>
         <p class="description">
-            I am learning LIFF
+            this is second page
         </p>
         <button id="actionBtn" style="font-size: 3rem; margin: 50px;">Do Action</button>
         <div class="row">
             <ul>
-                <li><a href="second.html">second liff</a></li>
-
-                <li><a href="line://msg/text/?foobar">line://msg/text/?foobar</a></li>
-                <li><a href="line://liff?url=https://www.google.com">line://liff?url=https://www.google.com</a></li>
-                <li><a href="https://liff.line-beta.mock/">https://liff.line-beta.mock/</a></li>
-                <li><a href="https://liff.line-beta.mock/hello/">https://liff.line-beta.mock/hello/</a></li>
-                <li><a href="https://liff.line-beta.mock/world/">https://liff.line-beta.mock/world/</a></li>
-                <li><a href="https://liff.line-beta.mock/foobar/">https://liff.line-beta.mock/foobar/</a></li>
-                <li><a href="https://liff.line-beta.mock/1651788963-2BrkQg4Z">https://liff.line-beta.mock/1651788963-2BrkQg4Z</a></li>
-                <li><a href="https://liff.cmds.dev/">parent dir: https://liff.cmds.dev/</a></li>
-                <li><a href="https://liff.cmds.dev/hello/">current entrypoint: https://liff.cmds.dev/hello/</a></li>
-                <li><a href="lineb://app/1651788963-2BrkQg4Z">for LINE Beta app: lineb://app/1651788963-2BrkQg4Z</a></li>
-                <li><a href="https://liff.line-beta.me/1651788963-2BrkQg4Z">for LINE Beta app: https://liff.line-beta.me/1651788963-2BrkQg4Z</a></li>
+                <li><a href="third.html">third page, not liff</a></li>
             </ul>
         </div>
         <div class="row">
-            <div>Open this page AGAIN!</div>
-            <a id="here" href=""></a>
-            <script>
-                window.onLoadFuncs.push(function() {
-                    var a = document.getElementById('here');
-                    var url = "line://liff?url=" + location.origin + location.pathname;
-                    here.href = url;
-                    here.innerText = url;
-                });
-            </script>
+            Notify Liff ID Changed
+            <ul>
+                <li><a href="liff://app/world?feature_token=FeatureToken_from_Scheme_for_World">liff://app/world?feature_token=FeatureToken_from_Scheme_for_World</a></li>
+            </ul>
         </div>
-
-        <h2>Input field</h2>
-            <div><input class="highlight"></input></div>
 
         <h2>Info</h2>
         <table border="1" style="font-size: 2rem;">
@@ -130,10 +105,6 @@
             <li class="info"></li>
             <li class="info"></li>
         </ul>
-
-        <h2>Input field</h2>
-            <div><input class="highlight"></input></div>
-
         <script>
         </script>
     </body>
