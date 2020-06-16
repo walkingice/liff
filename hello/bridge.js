@@ -1,6 +1,8 @@
 // very simple bride js implementation
 
-var liff = {};
+var liff = {
+    id: 'hello'
+};
 window._liff = window._liff ? window._liff : {};
 window._liff.postMessage = window._liff.postMessage
     ? window._liff.postMessage
