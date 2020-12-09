@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charset="utf-8"/ >
+        <title>Sub Window</title>
+        <link rel="stylesheet" href="./styles.css">
+        <style>
+            body {
+                font-size: 2rem;
+                background-color: #FFF;
+            }
+
+            .description {
+                margin: 20px;
+                padding: 20px;
+                font-style: oblique;
+            }
+
+            div.row {
+                min-height: 50px;
+                background-color: #DDDDFF;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .info {
+                background-color: #EEEEEE;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .time {
+                margin: 10px;
+                padding: 3px 7px;
+                color: #fff;
+                background-color: #777;
+                border-radius: 6px;
+                font-size: 0.7rem;
+            }
+
+            li {
+                margin-top: 20px;
+            }
+        </style>
+        <script>
+            window.liff = {
+                id: 'child'
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Sub Window page</h2>
+        <p class="description">
+            <h3>current url</h3>
+            <div id="currentUrl"></div>
+        </p>
+
+        <p class="description">
+        <button id="actionBtn" style="font-size: 3rem;">liff://close</button>
+        </p>
+        <p class="description">
+        <a href="liff://close">liff://close</a>
+        </p>
+
+        <script>
+            var urlDom = document.getElementById('currentUrl');
+            urlDom.innerText = location.href
+            document.getElementById('actionBtn').onclick = function () {
+                window.location.href = "liff://close"
+            }
+        </script>
+    </body>
+</html>
