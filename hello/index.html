@@ -66,6 +66,12 @@
             I am learning LIFF
         </p>
         <button id="actionBtn" style="font-size: 3rem; margin: 50px;">Do Action</button>
+
+        <div class="row">
+            <h5>current url</h5>
+            <div style="font-size: 1.2rem;" id="currentUrl"></div>
+        </div>
+
         <div class="row">
             <ul>
                 <li><a href="second.html">second.html</a></li>
@@ -172,6 +178,11 @@
             <div><input class="highlight"></input></div>
 
         <script>
+            var urlDom = document.getElementById('currentUrl');
+            urlDom.innerText = location.href
+            document.getElementById('actionBtn').onclick = function () {
+                window.location.href = "liff://close"
+            }
         </script>
     </body>
 </html>
