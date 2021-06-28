@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/ >
+        <title>TEST LIFF Error View</title>
+        <style>
+            body {
+                font-size: 2rem;
+                border: solid red;
+                border-width: 1px;
+                padding: 5px;
+                margin: 1px;
+                background-color: #EEE;
+            }
+
+            input {
+                font-size: 3rem;
+                width:90%;
+                margin: auto;
+                background-color: #FFC;
+            }
+
+            button {
+                font-size: 3rem;
+                width:50%;
+                margin: auto;
+                background-color: #FFC;
+            }
+
+            .highlight {
+                background-color: #FFC;
+            }
+
+            .description {
+                margin: 2rem;
+                padding: 1rem;
+            }
+
+            div.row {
+                min-height: 50px;
+                background-color: #DDDDFF;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            div.success {
+                color: green;
+            }
+
+            div.fail {
+                color: red;
+            }
+
+            .info {
+                background-color: #EEEEEE;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .time {
+                margin: 10px;
+                padding: 3px 7px;
+                color: #fff;
+                background-color: #777;
+                border-radius: 6px;
+                font-size: 0.7rem;
+            }
+
+            li {
+                margin-top: 20px;
+            }
+
+            li.notice {
+                padding: 10px;
+                background-color: #CCC;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>LINE LIFF Test Error Cases</h1>
+
+        <div class="row">
+            <h5>Case 4: Load Page Content, Network Layer error</h5>
+            <div id="test4a"></div>
+            <div class="description">
+                Click Load button. If network is on: see cat image. If network is off
+                <div class="success">Test Success: a broken image is inserted</div>
+                <div class="fail">Test fail: see Brown error view</div>
+            </div>
+            <button id="test4a_btn">Load</button>
+        </div>
+
+        <script>
+            (function() {
+                var contentDom = document.getElementById('test4a');
+                document.getElementById('test4a_btn').onclick = function () {
+                    contentDom.innerHTML = '<img src="https://http.cat/200" />';
+                }
+            })();
+        </script>
+
+        <div class="row">
+            <h5>Case 4: Load Page Content, HTTP Layer error</h5>
+            <div id="test4b"></div>
+            <div class="description">
+                Click Load button to insert a non-existing image.
+                <div class="success">Test Success: a broken image is inserted</div>
+                <div class="fail">Test fail: see Brown error view</div>
+            </div>
+            <button id="test4b_btn">Load</button>
+        </div>
+
+        <script>
+            (function() {
+                var contentDom = document.getElementById('test4b');
+                document.getElementById('test4b_btn').onclick = function () {
+                    contentDom.innerHTML = '<img src="https://httpstat.us/404" />';
+                }
+            })();
+        </script>
+
+        <div class="row">
+            <h5>Case 5: Load iframe contents, Network layer error</h5>
+            <div id="test5a"></div>
+            <div class="description">
+                Click Load button. If network is on: youtube video is shown. If network is off:
+                <div class="success">Test Success: a broken iframe is inserted</div>
+                <div class="fail">Test fail: see Brown error view</div>
+            </div>
+            <button id="test5a_btn">Load</button>
+        </div>
+
+        <script>
+            (function() {
+                var contentDom = document.getElementById('test5a');
+                document.getElementById('test5a_btn').onclick = function () {
+                    contentDom.innerHTML = '<iframe width="320" height="240" src="https://www.youtube.com/embed/B7Lh1t0ItSA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                }
+            })();
+        </script>
+
+        <div class="row">
+            <h5>Case 5: Load iframe contents, HTTP layer error</h5>
+            <div id="test5b"></div>
+            <div class="description">
+                Click Load button to insert a non-existing iframe.
+                <div class="success">Test Success: a broken iframe is inserted</div>
+                <div class="fail">Test fail: see Brown error view</div>
+            </div>
+            <button id="test5b_btn">Load</button>
+        </div>
+
+        <script>
+            (function() {
+                var contentDom = document.getElementById('test5b');
+                document.getElementById('test5b_btn').onclick = function () {
+                    contentDom.innerHTML = '<iframe width="320" height="240" src="https://httpstat.us/404" ></iframe>';
+                }
+            })();
+        </script>
+
+        <div class="row">
+            <h5>Case 7, 8: Page transition, Network layer error</h5>
+            <div class="description">
+                Click link to open google.com. If network is on, see Google page. If network is off:
+                <div class="success">Test Success: Brown error view is shown</div>
+                <div class="fail">Test fail: Brown error view is not shown</div>
+                <a href="https://google.com">Open Google.com</a>
+            </div>
+
+            <div class="description">
+                Click link to open non-existing domain. It should always fail:
+                <div class="success">Test Success: Brown error view is shown</div>
+                <div class="fail">Test fail: Brown error view is not shown</div>
+                <a href="https://this.domain.isnotexisting">Open non-existing domain</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <h5>Case 7, 8: Page transition, HTTP layer error</h5>
+            <div class="description">
+                Click link to open 404 page. It should always fail:
+                <div class="success">Test Success: Brown error view is not shown</div>
+                <div class="fail">Test fail: Brown error view is shown</div>
+                <a href="https://httpstat.us/404">Open 404 page</a>
+            </div>
+        </div>
+
+
+    </body>
+</html>
