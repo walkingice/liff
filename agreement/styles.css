@@ -1,0 +1,62 @@
+h1 {
+    font-size: 3rem;
+}
+
+body {
+    word-wrap: break-word;
+    font-size: 2rem;
+}
+
+body {
+    font-size: 2rem;
+    border: solid red;
+    border-width: 1px;
+    padding: 5px;
+    margin: 1px;
+    background-color: #EEE;
+}
+
+input {
+    font-size: 3rem;
+    width:90%;
+    margin: auto;
+    background-color: #FFC;
+}
+
+.highlight {
+    background-color: #FFC;
+}
+
+.description {
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+div.row {
+    min-height: 50px;
+    background-color: #DDDDFF;
+    padding: 20px;
+}
+
+li {
+    margin-top: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #EEE;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: #EEA;
+    }
+}
+
