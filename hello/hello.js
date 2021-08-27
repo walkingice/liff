@@ -35,15 +35,6 @@ function init() {
     });
 }
 
-function initializeApp(lang, context) {
-    document.getElementById('languagefield').textContent = lang;
-    document.getElementById('viewtypefield').textContent = context.viewType;
-    document.getElementById('useridfield').textContent = context.userId;
-    document.getElementById('utouidfield').textContent = context.utouId;
-    document.getElementById('roomidfield').textContent = context.roomId;
-    document.getElementById('groupidfield').textContent = context.groupId;
-}
-
 window.onload = function() {
     init();
 

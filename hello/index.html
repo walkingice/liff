@@ -66,8 +66,6 @@
     </head>
     <body>
         <h1>LINE LIFF</h1>
-        <img src="count.gif">
-        <video width="300" height="300" controls><source src="test.mp4" type="video/mp4" /></video>
         <p class="description">
             I am learning LIFF
         </p>
@@ -82,16 +80,12 @@
             <ul>
                 <li><a href="second.html">second.html</a></li>
 
-                <li><a href="line://msg/text/?foobar">line://msg/text/?foobar</a></li>
-                <li><a href="mockline://picker/?liffId=hello&ott=token&data={}">Open mock Share Target Picker</a></li>
                 <li><a href="https://liff.line-beta.mock/">https://liff.line-beta.mock/</a></li>
                 <li><a href="https://liff.line-beta.mock/hello/">https://liff.line-beta.mock/hello/</a></li>
                 <li><a href="https://liff.line-beta.mock/world/">https://liff.line-beta.mock/world/</a></li>
                 <li><a href="https://liff.line-beta.mock/foobar/">https://liff.line-beta.mock/foobar/</a></li>
-                <li><a href="https://liff.line-beta.mock/1651788963-2BrkQg4Z">https://liff.line-beta.mock/1651788963-2BrkQg4Z</a></li>
-                <li><a href="https://liff.cmds.dev/">parent dir: https://liff.cmds.dev/</a></li>
-                <li><a href="https://liff.cmds.dev/hello/">current entrypoint: https://liff.cmds.dev/hello/</a></li>
-                <li><a href="lineb://app/1651788963-2BrkQg4Z">for LINE Beta app: lineb://app/1651788963-2BrkQg4Z</a></li>
+                <li><a href="line://msg/text/?foobar">line://msg/text/?foobar</a></li>
+                <li><a href="mockline://picker/?liffId=hello&ott=token&data={}">Open mock Share Target Picker</a></li>
                 <li><a href="https://liff.line-beta.me/1651788963-2BrkQg4Z">for LINE Beta app: https://liff.line-beta.me/1651788963-2BrkQg4Z</a></li>
             </ul>
         </div>
@@ -133,16 +127,9 @@
         </div>
 
         <div class="row">
-            <div>Open this page AGAIN!</div>
-            <a id="here" href=""></a>
-            <script>
-                window.onLoadFuncs.push(function() {
-                    var a = document.getElementById('here');
-                    var url = "line://liff?url=" + location.origin + location.pathname;
-                    here.href = url;
-                    here.innerText = url;
-                });
-            </script>
+            <h3>Animated GIF and Video</h3>
+            <img src="count.gif">
+            <video width="300" height="300" controls><source src="test.mp4" type="video/mp4" /></video>
         </div>
 
         <h2>Input field</h2>
