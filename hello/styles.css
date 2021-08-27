@@ -10,6 +10,11 @@ button {
     font-size: 3rem;
 }
 
+iframe {
+    width: 100%;
+    min-height: 300px;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #DFF;

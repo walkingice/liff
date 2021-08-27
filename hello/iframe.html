@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <meta charset="utf-8"/ >
+        <title>iFrame page</title>
+        <style>
+            body {
+                font-size: 2rem;
+                background-color: #FDD !important;
+            }
+
+            .description {
+                margin: 20px;
+                padding: 20px;
+                font-style: oblique;
+            }
+
+            div.row {
+                min-height: 50px;
+                background-color: #DDDDFF;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .info {
+                background-color: #EEEEEE;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .time {
+                margin: 10px;
+                padding: 3px 7px;
+                color: #fff;
+                background-color: #777;
+                border-radius: 6px;
+                font-size: 0.7rem;
+            }
+
+            button {
+                font-size: 3rem;
+            }
+
+            li {
+                margin-top: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="./styles.css">
+        <script>
+        </script>
+    </head>
+    <body>
+        <h1>iFrame</h1>
+        <p class="description">
+            this is iframe
+            <ul>
+                <li><a href="second.html">second.html</a></li>
+                <li><a href="second.html" target="_blank">open second.html target _blank</a></li>
+                <li><a href="second.html" target="_parent">open second.html taret _parent</a></li>
+                <li><a href="second.html" target="_self">open second.html target _self</a></li>
+                <li><a href="second.html" target="_top">open second.html target _top</a></li>
+                <li><a href="second.html" target="_new">open second.html target _new</a></li>
+                <li><a href="second.html" target="_foobar">open second.html target _foobar</a></li>
+                <li><a href="https://www.google.com">https://www.google.com</a></li>
+                <li><a href="https://www.google.com" target="_blank">https://www.google.com BLANK Target</a></li>
+                <li><button id="btnA">Click to set location to second.html</button></li>
+                <li><button id="btnB">Click to set location to https://www.google.com</button></li>
+            </ul>
+        </p>
+    </body>
+
+    <script>
+        document.getElementById('btnA').onclick = function() {
+            location = location.origin + '/second.html'
+        }
+        document.getElementById('btnB').onclick = function() {
+            location = 'https://www.google.com';
+        }
+
+    </script>
+</html>
