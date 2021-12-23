@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>TEST LIFF input</title>
+    <link rel="stylesheet" href="./common.css">
+
+    <style>
+        .highlight {
+            background-color: #FFC;
+        }
+
+        .description {
+            margin: 2rem;
+            padding: 1rem;
+        }
+
+        div.row {
+            min-height: 50px;
+            background-color: #DDDDFF;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        li {
+            margin-top: 20px;
+        }
+
+        li.notice {
+            padding: 10px;
+            background-color: #CCC;
+        }
+
+        input {
+            margin: 50px;
+        }
+
+        #submit-info {
+            margin: 10px;
+            padding: 10px;
+            background-color: white;
+        }
+
+        span.info-empty {
+            font-size: 1rem;
+            color: grey;
+        }
+
+        .img-preview {
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body class="bordered">
+    <h1>LINE LIFF Test Input tag</h1>
+
+    <a id="submit-btn" class="button" onclick="onClickedSubmit(this)">Check selected files</a>
+    <div id="submit-info"></div>
+
+    <div class="row">
+        <p>input00: No attribute</p>
+        <input type="file" name="input00">
+    </div>
+
+    <div class="row">
+        <p>input01: accept="image/gif, image/png, image/jpeg" capture="camera"</p>
+        <input type="file" name="input01" accept="image/gif, image/png, image/jpeg" capture="camera">
+    </div>
+
+    <div class="row">
+        <p>input02: accept="image/*" capture="environment"</p>
+        <input type="file" name="input02" accept="image/*" capture="environment">
+    </div>
+    <div class="row">
+        <p>input03: accept="image/*" capture="user"</p>
+        <input type="file" name="input03" accept="image/*" capture="user">
+    </div>
+
+    <div class="row">
+        <p>input04: capture=""</p>
+        <input type="file" name="input04" capture="">
+    </div>
+
+    <div class="row">
+        <p>input05: accept="image/gif, image/png, image/jpeg", no capture</p>
+        <input type="file" name="input05" accept="image/gif, image/png, image/jpeg">
+    </div>
+
+    <div class="row">
+        <p>input06: accept="image/jpg"</p>
+        <input type="file" name="input06" accept="image/jpg">
+    </div>
+
+    <div class="row">
+        <p>input07: accept="image/png"</p>
+        <input type="file" name="input07" accept="image/png">
+    </div>
+
+    <div class="row">
+        <p>input08: accept="image/*"</p>
+        <input type="file" name="input08" accept="image/*">
+    </div>
+
+    <div class="row">
+        <p>input09: accept="video/*"</p>
+        <input type="file" name="input09" accept="video/*">
+    </div>
+
+    <div class="row">
+        <p>input10: accept="image/* video/*"</p>
+        <input type="file" name="input10" accept="image/*, video/*">
+    </div>
+
+    <div class="row">
+        <p>input11: accept="image/gif , image/jpg, video/*"</p>
+        <input type="file" name="input11" accept="image/gif, image/jpg, video/*">
+    </div>
+
+    <div class="row">
+        <p>input12: accept="image/gif , image/jpg, video/mp4"</p>
+        <input type="file" name="input12" accept="image/gif, image/jpg, video/mp4">
+    </div>
+
+    <div class="row">
+        <p>input13: No attribute. However, it could choose multiple files</p>
+        <input type="file" name="input13" multiple>
+    </div>
+
+    <script>
+        function readFileDom(inputDom, index, msgContainer) {
+            let romDom = document.createElement('div')
+            if (inputDom.files.length == 0) {
+                romDom.innerHTML = `<span class="info-empty"> [${index}] ${inputDom.name} ....empty</span>`
+            } else {
+                romDom.innerText = `[${index}] `
+                Array.from(inputDom.files).forEach(f => {
+                    let itemDom = document.createElement('div')
+                    itemDom.innerHTML = `<div> -->  name: ${f.name}, size: ${(f.size / 1024).toFixed(1)} k </div><span> image preview:</span>`
+                    romDom.appendChild(itemDom)
+
+                    let img = document.createElement("img");
+                    img.src = window.URL.createObjectURL(f);
+                    img.classList = "img-preview"
+                    img.onload = function () {
+                        window.URL.revokeObjectURL(this.src);
+                    }
+                    romDom.appendChild(img);
+                })
+            }
+            msgContainer.appendChild(romDom)
+        }
+        window.onClickedSubmit = () => {
+            let infoDom = document.getElementById('submit-info')
+            let msgContainer = document.createDocumentFragment()
+            document.querySelectorAll('input')
+                .forEach((input, index) => {
+                    readFileDom(input, index, msgContainer)
+                })
+            infoDom.innerHTML = ""
+            infoDom.appendChild(msgContainer)
+        }
+    </script>
+</body>
+
+</html>
