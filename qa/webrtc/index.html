@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/ >
+        <title>Test WebRtc</title>
+        <style>
+            body {
+                font-size: 2rem;
+                border: solid red;
+                border-width: 1px;
+                padding: 5px;
+                margin: 1px;
+            }
+
+            input {
+                font-size: 3rem;
+                width:90%;
+                margin: auto;
+                background-color: #FFC;
+            }
+
+            .highlight {
+                background-color: #FFC;
+            }
+
+            .description {
+                margin: 20px;
+                padding: 20px;
+                font-style: oblique;
+            }
+
+            div.row {
+                min-height: 50px;
+                background-color: #DDDDFF;
+                margin: 20px;
+                padding: 20px;
+            }
+            .dom {
+                width: 200px;
+                height: 200px;
+                background-color: #FCC;
+            }
+
+            .audioVisual {
+                width: 300px;
+                height: 200px;
+                background-color: #CFC;
+            }
+
+            .btn {
+                margin: 30px;
+                font-size: 2.5rem;
+            }
+        </style>
+        <link rel="stylesheet" href="./styles.css">
+        <script src="bridge.js"></script>
+    </head>
+
+    <body>
+        <h1>LINE LIFF</h1>
+        <p class="description">
+            Testing WebRTC
+        </p>
+
+        <div class="row">
+            <h4>Video Only</h4>
+            <div>
+                <button id="videoOnlyBtn" class="btn">Try</button>
+            </div>
+            <video id="videoOnlyDom" class="dom"></video>
+        </div>
+
+        <div class="row">
+            <h4>Audio Only</h4>
+            <div>
+                <button id="audioOnlyBtn" class="btn">Try</button> (then talk)
+            </div>
+            <canvas id="audioOnlyCanvas" class="audioVisual"></canvas>
+        </div>
+
+        <div class="row">
+            <h4>Video and Audio</h4>
+            <div>
+                <button id="videoAudioBtn" class="btn">Try</button> (then talk)
+            </div>
+            <video id="videoDomForBoth" class="dom"></video>
+            <canvas id="audioCanvasForBoth" class="audioVisual"></canvas>
+        </div>
+
+
+        <script>
+            // ref: https://gordonlesti.com/reading-web-audio-api-with-javascript/
+            function createAudioDrawCallback(stream, canvas) {
+                let audioCtx = new AudioContext();
+                let analyser = audioCtx.createAnalyser()
+                analyser.minDecibels = -90
+                analyser.maxDecibels = -10
+                analyser.smoothingTimeConstant = 0.85
+                analyser.fftSize = 128
+                let bufferLength = analyser.frequencyBinCount
+
+                let source = audioCtx.createMediaStreamSource(stream)
+                let distortion = audioCtx.createWaveShaper()
+                let gainNode = audioCtx.createGain()
+                let biquadFilter = audioCtx.createBiquadFilter()
+                let convolver = audioCtx.createConvolver()
+                source.connect(analyser)
+                analyser.connect(distortion)
+                distortion.connect(biquadFilter)
+                biquadFilter.connect(convolver)
+                convolver.connect(gainNode)
+                gainNode.connect(audioCtx.destination)
+
+                let rect = canvas.getBoundingClientRect();
+                canvas.width = rect.width;
+                canvas.height = rect.height;
+                let context = canvas.getContext("2d");
+                let barWidth = rect.width / bufferLength
+
+                let cb = function() {
+                    let dataArray = new Uint8Array(bufferLength);
+                    analyser.getByteFrequencyData(dataArray)
+                    context.fillStyle = 'rgba(200, 255, 200, 0.2)'
+                    context.fillRect(0, 0, rect.width, rect.height)
+                    context.fillStyle = "#3F3"
+                    for (let i = 0; i < bufferLength; i++) {
+                        let barHeight = (rect.height * dataArray[i])/256;
+                        context.fillRect(i * barWidth, rect.height - barHeight, barWidth, barHeight);
+                    }
+                    requestAnimationFrame(cb)
+                }
+                return cb
+            }
+
+            document.getElementById('videoOnlyBtn').onclick = function () {
+                let videoDom = document.getElementById('videoOnlyDom');
+                let constraints = window.constraints = {
+                    audio: false,
+                    video: true
+                };
+                navigator.mediaDevices.getUserMedia(constraints)
+                    .then(function(stream) {
+                        console.log("got stream");
+                        videoDom.srcObject = stream;
+                        videoDom.play();
+                    })
+                    .catch(function(error) {
+                        window.alert("error: ", error);
+                    });
+            }
+
+            document.getElementById('audioOnlyBtn').onclick = function () {
+                let audioVisualCanvas = document.getElementById('audioOnlyCanvas');
+                let constraints = window.constraints = {
+                    audio: true,
+                    video: false
+                };
+
+                navigator.mediaDevices.getUserMedia(constraints)
+                    .then(function(stream) {
+                        console.log("got stream");
+                        let cb = createAudioDrawCallback(stream, audioVisualCanvas)
+                        requestAnimationFrame(cb)
+                    })
+                    .catch(function(error) {
+                        window.alert("error: ", error);
+                    });
+            }
+
+            document.getElementById('videoAudioBtn').onclick = function () {
+                let videoDom = document.getElementById('videoDomForBoth');
+                let audioVisualCanvas = document.getElementById('audioCanvasForBoth');
+                let constraints = window.constraints = {
+                    audio: true,
+                    video: true
+                };
+                navigator.mediaDevices.getUserMedia(constraints)
+                    .then(function(stream) {
+                        console.log("got stream");
+                        videoDom.srcObject = stream;
+                        videoDom.play();
+                        let cb = createAudioDrawCallback(stream, audioVisualCanvas)
+                        requestAnimationFrame(cb)
+                    })
+                    .catch(function(error) {
+                        console.error("error: ", error);
+                    });
+            }
+
+            window.onload = function () {
+                setTimeout(function() {
+                    location.href = "liff://app/hello?feature_token=FeatureeToken_In_WebRtc"
+                }, 100);
+            };
+        </script>
+    </body>
+</html>
