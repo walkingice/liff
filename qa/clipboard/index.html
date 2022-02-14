@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>TEST LIFF clipboard</title>
+    <style>
+        body {
+            font-size: 2rem;
+            border: solid red;
+            border-width: 1px;
+            padding: 5px;
+            margin: 1px;
+            background-color: #EEE;
+        }
+
+        input {
+            font-size: 2.5rem;
+            width: 100%;
+            margin: auto;
+            padding: 5px;
+            background-color: #FFC;
+        }
+
+        button {
+            font-size: 3rem;
+            width: 50%;
+            margin: auto;
+        }
+
+        .highlight {
+            background-color: #FFC;
+        }
+
+        .description {
+            margin: 2rem;
+            padding: 1rem;
+        }
+
+        div.row {
+            min-height: 50px;
+            background-color: #DDDDFF;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        div.success {
+            color: green;
+        }
+
+        div.fail {
+            color: red;
+        }
+
+        .info {
+            background-color: #EEEEEE;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .time {
+            margin: 10px;
+            padding: 3px 7px;
+            color: #fff;
+            background-color: #777;
+            border-radius: 6px;
+            font-size: 0.7rem;
+        }
+
+        li {
+            margin-top: 20px;
+        }
+
+        li.notice {
+            padding: 10px;
+            background-color: #CCC;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LINE LIFF Test clipboard</h1>
+
+    <script>
+        window.getNow = function () {
+            return new Date().toISOString()
+        }
+    </script>
+
+    <div class="row">
+        <h5>Test copy</h5>
+        <div>
+            <button id="btn-refresh" style="margin-bottom:2rem; ">Refresh</button>
+        </div>
+
+        <div>
+            <input id="input-dom-1"></input>
+        </div>
+        <div id="info-dom-1" class="description">
+            Click to copy string to clipboard
+        </div>
+        <button id="btn-copy">Copy</button>
+    </div>
+    <script>
+            (function () {
+                var inputDom = document.getElementById('input-dom-1');
+                function refreshTime() {
+                    inputDom.value = "Now : " + getNow()
+                }
+                refreshTime()
+                document.getElementById('btn-refresh').onclick = function () {
+                    refreshTime()
+                }
+
+                var infoDom = document.getElementById('info-dom-1');
+                document.getElementById('btn-copy').onclick = function () {
+                    try {
+                        infoDom.innerText = "clicked copy button, waiting promise...."
+                        navigator.clipboard
+                            .writeText(inputDom.value)
+                            .then(() => { infoDom.innerText = "✅ Successfully copied at time: " + getNow() })
+                            .catch((e) => infoDom.innerText = "❌ " + e)
+                    } catch (error) {
+                        infoDom.innerText = "❌ " + error
+                    }
+                }
+            })();
+    </script>
+
+    <div class="row">
+        <h5>Test Paste</h5>
+        <div>
+            <input id="input-dom-2" disabled></input>
+        </div>
+        <div id="info-dom-2" class="description">
+            Click to paste string from clipboard
+        </div>
+        <button id="btn-paste">Paste</button>
+    </div>
+    <script>
+        (function () {
+            var infoDom = document.getElementById('info-dom-2');
+            var inputDom = document.getElementById('input-dom-2');
+            document.getElementById('btn-paste').onclick = function () {
+                try {
+                    infoDom.innerText = "clicked paste button, waiting promise...."
+                    navigator.clipboard
+                        .readText()
+                        .then(clipText => {
+                            inputDom.value = clipText
+                            infoDom.innerText = "✅ Successfully pasted at time: " + getNow()
+                        })
+                        .catch(e => infoDom.innerText = "❌ " + e);
+                } catch (error) {
+                    infoDom.innerText = "❌ " + error
+                }
+            }
+        })();
+    </script>
+
+
+</body>
+
+</html>
