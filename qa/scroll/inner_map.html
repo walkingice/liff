@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Test Scrolling issue</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        div.fake-map {
+            width: 80%;
+            height: 300px;
+            background-color: #0057B8;
+        }
+        
+        #first-map {
+            height: 30vh;
+        }
+        
+        #second-map {
+            height: 100vh;
+        }
+
+    </style>
+    <script type="text/javascript" src="fake-map.js"></script>
+</head>
+
+<body>
+    <header>Header</header>
+    <h1>Test Scrolling: Map + Inner</h1>
+
+    Below is a short fake map dom
+
+    <div id="first-map" class="fake-map"></div>
+
+    <div class="filler">01</div>
+    <div class="filler">02</div>
+
+    Below is a long fake map dom
+    <div id="second-map" class="fake-map"></div>
+
+    <div class="filler">03</div>
+    <div class="filler">04</div>
+    <div class="filler">05</div>
+    <div class="filler">06</div>
+    <div class="filler">07</div>
+    <div class="filler">08</div>
+    <div class="filler">09</div>
+    <div class="filler">10</div>
+
+    <footer>Footer</footer>
+</body>
+
+<script>
+    let firstMap = document.getElementById("first-map")
+    let secondMap = document.getElementById("second-map")
+    window.initFakeMap(firstMap)
+    window.initFakeMap(secondMap)
+</script>
+
+</html>

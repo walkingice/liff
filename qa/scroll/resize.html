@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Test Scrolling issue</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="lib.js"></script>
+    <style>
+        #container1 {
+            height: calc(100vh - var(--header-height) - var(--footer-height));
+        }
+    </style>
+</head>
+
+<body>
+    <header>Header</header>
+    <h1>Test Scrolling: Resize</h1>
+    <p>Click button to prepend or remove Row to/from the below div</p>
+    <button id="btn-add">Prepend row</button>
+    <button id="btn-del">Remove first row</button>
+    <div id="container" class="inner-container">
+        <div class="filler">01</div>
+        <div class="filler">02</div>
+    </div>
+
+    <footer>Footer</footer>
+</body>
+
+<script>
+    function initBtns(btnAdd, btnDel, container) {
+        btnAdd.addEventListener('click', (e) => {
+            let newDom = document.createElement('div')
+            newDom.classList.add('filler')
+            newDom.innerText = "Added at:" + formatedTime()
+            container.insertBefore(newDom, container.firstChild)
+        })
+
+        btnDel.addEventListener('click', (e) => {
+            container.removeChild(container.firstElementChild)
+        })
+    }
+
+    let btnAdd = document.getElementById("btn-add")
+    let btnDel = document.getElementById("btn-del")
+    let container = document.getElementById("container")
+    initBtns(btnAdd, btnDel, container)
+</script>
+
+</html>
