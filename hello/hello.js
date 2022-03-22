@@ -1,24 +1,16 @@
-window.onLoadFuncs = [];
-
-window.formatedTime = function() {
-    //var now = new Date();
-    //return now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + "." + now.getUTCMilliseconds();
-    return new Date().toISOString().slice(11)
-}
-
-function init() {
-    window.appendLog = (function() {
+window.onLoadFuncs.push(() => {
+    window.appendLog = (function () {
         var p = document.getElementById('logs');
         var logs = p.getElementsByTagName('li');
         var array = [];
 
-        return function(newMsg) {
+        return function (newMsg) {
             var now = new Date();
             var prefix = "<span class='time'>"
                 + formatedTime()
                 + "</span>";
             array.push(prefix + newMsg);
-            while(array.length > logs.length) {
+            while (array.length > logs.length) {
                 array.shift();
             }
 
@@ -27,17 +19,9 @@ function init() {
             }
         }
     })();
+});
 
-    window.onLoadFuncs.forEach(function(f) {
-        if (f !== undefined && !!f && typeof f === "function") {
-            f.apply();
-        }
-    });
-}
-
-window.onload = function() {
-    init();
-
+window.onLoadFuncs.push(() => {
     if (liff === undefined || !liff) {
         alert('No LIFF SDK ?!');
     } else {
@@ -56,10 +40,9 @@ window.onload = function() {
                     "url": "https://foo.bar.com"
                 }
             },
-            function(result) {
+            function (result) {
                 console.log(result);
             }
         );
     }
-};
-
+});
