@@ -1,0 +1,61 @@
+:root {
+    --header-height: 48px;
+    --footer-height: 40px;
+}
+
+body.bordered {
+    font-size: 2rem;
+    border: solid red;
+    border-width: 3px;
+    padding: 5px;
+    margin: 1px;
+    background-color: #EEE;
+}
+
+header {
+    width: 100%;
+    height: var(--header-height);
+    text-align: center;
+    padding-top: calc(var(--header-height) / 2);
+    background-color: palevioletred;
+}
+
+footer {
+    width: 100%;
+    height: var(--footer-height);
+    text-align: center;
+    padding-top: calc(var(--footer-height) / 2);
+    background-color: rebeccapurple;
+}
+
+input {
+    font-size: 3rem;
+    width: 90%;
+    margin: auto;
+    background-color: #FFC;
+}
+
+.button {
+    color: white;
+    background-color: #508050;
+    cursor: pointer;
+    padding: 10px 50px;
+    font-size: 3rem;
+    width: 50%;
+    margin: 1rem auto;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: none;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    line-height: 1.5;
+    border-radius: .25rem;
+    border: 1px solid transparent;
+}
+
+.button:active {
+    transform: translateX(5px) translateY(5px);
+}
