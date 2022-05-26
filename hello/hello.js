@@ -31,13 +31,14 @@ window.onLoadFuncs.push(() => {
     document.getElementById('actionBtn').onclick = function () {
         var liffId = (window.liff && window.liff.id) ? window.liff.id : "NO_LIFF_ID";
         liff.postMessage(
-            'shareMessage',
-            'dummy_feature_token_' + liffId,
+            'openWindow',
+            'fake_feature_token_' + liffId,
             {
-                "messages": "share this message, " + liffId,
+                "url": "https://www.google.com",
+                "external": false,
                 "referrer": {
                     "liffId": liffId,
-                    "url": "https://foo.bar.com"
+                    "url": "https://www.google.com"
                 }
             },
             function (result) {
