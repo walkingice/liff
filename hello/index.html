@@ -12,54 +12,6 @@
                 margin: 1px;
             }
 
-            input {
-                font-size: 3rem;
-                width:90%;
-                margin: auto;
-                background-color: #FFC;
-            }
-
-            .highlight {
-                background-color: #FFC;
-            }
-
-            .description {
-                margin: 20px;
-                padding: 20px;
-                font-style: oblique;
-            }
-
-            div.row {
-                min-height: 50px;
-                background-color: #DDDDFF;
-                margin: 20px;
-                padding: 20px;
-            }
-
-            .info {
-                background-color: #EEEEEE;
-                margin: 20px;
-                padding: 20px;
-            }
-
-            .time {
-                margin: 10px;
-                padding: 3px 7px;
-                color: #fff;
-                background-color: #777;
-                border-radius: 6px;
-                font-size: 0.7rem;
-            }
-
-            li {
-                margin-top: 20px;
-            }
-
-            li.notice {
-                padding: 10px;
-                background-color: #CCC;
-            }
-
         </style>
         <link rel="stylesheet" href="./styles.css">
         <script src="bridge.js"></script>
@@ -74,14 +26,19 @@
         <button id="actionBtn" style="font-size: 3rem; margin: 50px;">Do Action</button>
 
         <div class="row">
+            Notify Liff ID Changed
+            <ul>
+                <li><a href="liff://app/hello?feature_token=dummy_feature_token_hello">liff://app/hello?feature_token=dummy_feature_token_hello</a></li>
+            </ul>
+        </div>
+
+        <div class="row">
             <h5>current url</h5>
             <div style="font-size: 1.2rem;" id="currentUrl"></div>
         </div>
 
         <div class="row">
             <ul>
-                <li><a href="second.html">second.html</a></li>
-
                 <li><a href="https://liff.line-beta.mock/">https://liff.line-beta.mock/</a></li>
                 <li><a href="https://liff.line-beta.mock/hello/">https://liff.line-beta.mock/hello/</a></li>
                 <li><a href="https://liff.line-beta.mock/world/">https://liff.line-beta.mock/world/</a></li>
@@ -117,14 +74,9 @@
             </ul>
 
             <ul>
-                <li><a href="second.html">second liff</a></li>
-            </ul>
-        </div>
+                <li><a href="second.html">second page</a></li>
+                <li><a href="third.html">third page</a></li>
 
-        <div class="row">
-            Notify Liff ID Changed
-            <ul>
-                <li><a href="liff://app/hello?feature_token=dummy_feature_token_hello">liff://app/hello?feature_token=dummy_feature_token_hello</a></li>
             </ul>
         </div>
 

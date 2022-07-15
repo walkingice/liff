@@ -10,9 +10,57 @@ button {
     font-size: 3rem;
 }
 
+li {
+    margin-top: 3rem;
+}
+
+li.notice {
+    padding: 10px;
+    background-color: #CCC;
+}
+
+input {
+    font-size: 3rem;
+    width: 90%;
+    margin: auto;
+    background-color: #FFC;
+}
+
 iframe {
     width: 100%;
     min-height: 300px;
+}
+
+.highlight {
+    background-color: #FFC;
+}
+
+.description {
+    margin: 20px;
+    padding: 20px;
+    font-style: oblique;
+}
+
+div.row {
+    min-height: 50px;
+    background-color: #DDDDFF;
+    margin: 20px;
+    padding: 20px;
+}
+
+.info {
+    background-color: #EEEEEE;
+    margin: 20px;
+    padding: 20px;
+}
+
+.time {
+    margin: 10px;
+    padding: 3px 7px;
+    color: #fff;
+    background-color: #777;
+    border-radius: 6px;
+    font-size: 0.7rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,4 +74,3 @@ iframe {
         background-color: #FDF;
     }
 }
-
