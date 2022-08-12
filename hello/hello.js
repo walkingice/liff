@@ -47,3 +47,12 @@ window.onLoadFuncs.push(() => {
         );
     }
 });
+
+window.onLoadFuncs.push(() => {
+    let referrerDom = document.getElementById('referrer')
+    if (!!document.referrer) {
+        referrerDom.innerText = document.referrer
+    } else {
+        referrerDom.innerText = "None"
+    }
+});
