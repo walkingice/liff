@@ -1,8 +1,21 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "jp.naver.line.android.liff",
-    "sha256_cert_fingerprints": ["D3:1C:D8:33:AF:6C:1F:B7:D7:CD:8A:83:38:B2:C1:F9:C3:4E:9D:1D:D7:DA:4F:FE:E0:1C:33:A0:20:36:A3:64"]
-  }
-}]
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "jp.naver.line.android.liff",
+        "sha256_cert_fingerprints": ["D3:1C:D8:33:AF:6C:1F:B7:D7:CD:8A:83:38:B2:C1:F9:C3:4E:9D:1D:D7:DA:4F:FE:E0:1C:33:A0:20:36:A3:64"]
+      }
+    },
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.example.hellopasskey",
+        "sha256_cert_fingerprints": [
+            "D3:1C:D8:33:AF:6C:1F:B7:D7:CD:8A:83:38:B2:C1:F9:C3:4E:9D:1D:D7:DA:4F:FE:E0:1C:33:A0:20:36:A3:64",
+            "19:A8:27:87:FD:12:2D:89:29:3F:2E:FC:65:37:DD:26:32:56:55:33:36:8E:10:3A:5F:D9:05:4C:CC:66:08:E5"
+        ]
+      }
+    }
+]
